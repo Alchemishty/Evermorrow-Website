@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Evermorrow-Website/static/css/main.df542615.css",
-    "main.js": "/Evermorrow-Website/static/js/main.0a59ca86.js",
-    "index.html": "/Evermorrow-Website/index.html",
-    "main.df542615.css.map": "/Evermorrow-Website/static/css/main.df542615.css.map",
-    "main.0a59ca86.js.map": "/Evermorrow-Website/static/js/main.0a59ca86.js.map"
+    "main.css": "/evermorrowlabs.com/static/css/main.df542615.css",
+    "main.js": "/evermorrowlabs.com/static/js/main.006eccae.js",
+    "index.html": "/evermorrowlabs.com/index.html",
+    "main.df542615.css.map": "/evermorrowlabs.com/static/css/main.df542615.css.map",
+    "main.006eccae.js.map": "/evermorrowlabs.com/static/js/main.006eccae.js.map"
   },
   "entrypoints": [
     "static/css/main.df542615.css",
-    "static/js/main.0a59ca86.js"
+    "static/js/main.006eccae.js"
   ]
 }
