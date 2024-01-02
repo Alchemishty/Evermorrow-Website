@@ -18,6 +18,7 @@ const GalleryComponent = () => {
   useEffect(() => {
     SwiperCore.use([Navigation, Pagination, Mousewheel]);
     const swiper = new Swiper('.swiper', {
+      slidesPerView: 'auto',
       speed: 1000,
       effect: 'slide',
       loop: true,
@@ -45,7 +46,6 @@ const GalleryComponent = () => {
 
   return (
     <div style={{flex: 1, background: "#000"}}>
-      <section>
         {/* <img
           className="hero"
           src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/c62efd51-f844-4335-ba29-70ea35521dd8"
@@ -70,7 +70,6 @@ const GalleryComponent = () => {
             </div>
           </div>
         </div>
-      </section>
     </div>
   );
 };
