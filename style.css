@@ -28,11 +28,14 @@ body {
 
 p {
 	max-width: 40ch;
+	font-size: 5rem;
 }
 
 .fixed-height {
 	height: 50px; 
 	display: inline-block;
+	font-size: 1rem;
+	font-weight: 80;
 }
 
 section:nth-of-type(1) {
@@ -56,6 +59,10 @@ article {
 
 h1 {
 	color: hsl(0 0% 90%);
+}
+
+h2 {
+	font-size: 3rem;
 }
 
 :is(section, article) {
@@ -532,4 +539,18 @@ html {
 	@keyframes activate { to { flex: 3; }}
 	@-webkit-keyframes deactivate { to { flex: 1; }}
 	@keyframes deactivate { to { flex: 1; }}
+}
+
+@media (max-width: 600px) {
+    p {
+        font-size: 1.5rem; /* Adjust the size as needed */
+    }
+
+	h1 {
+		font-size: 3rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
 }
