@@ -1,0 +1,65 @@
+.gamecard {
+  display: flex;
+  height: 100%;
+  position: relative;
+  aspect-ratio: 420/527;
+  align-items: center;
+  justify-content: center;
+  perspective: 800px;
+}
+
+.gamecard-inner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  mask-image: url("/gameCardMask.svg");
+  mask-size: cover;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform ease-out;
+}
+
+.gamecard-inner:hover {
+  transform: rotateX(var(--x-rotation)) rotateY(var(--y-rotation));
+}
+
+.gamecard-overlay {
+  height: 100%;
+  background: #14244d;
+  mix-blend-mode: color;
+  z-index: 9;
+  transition: transform 450ms ease-in-out;
+}
+
+.gamecard-edge {
+  width: 33%;
+}
+
+.gamecard-middle {
+  width: 34%;
+}
+
+.gamecard-image {
+  position: absolute;
+  width: 100%;
+  transition: width 500ms ease-in-out;
+}
+
+.gamecard-inner:hover>.gamecard-middle {
+  transform: translateY(100%);
+}
+
+.gamecard-inner:hover>.gamecard-edge {
+  transform: translateY(-100%);
+}
+
+.gamecard-inner:hover>.gamecard-image {
+  width: 110%;
+}
+
+@media only screen and (max-width: 768px) {
+  .gamecard {
+    width: 100%;
+  }
+}

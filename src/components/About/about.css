@@ -1,0 +1,104 @@
+.about {
+  height: max-content;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0rem 0vw 4rem 4vw;
+  /* margin-bottom: 1rem; */
+}
+
+.about-header {
+  display: flex;
+  width: 100%;
+  justify-content: start;
+}
+
+.about-title {
+  color: #fff;
+  font-family: "FormulaCondensed-Bold";
+  font-size: 4rem;
+  font-style: normal;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.blue-text {
+  background: var(--gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin-top: 2rem;
+  height: max-content;
+  position: relative;
+  perspective: 1000px;
+  padding-right: 4rem;
+}
+
+.about-body p {
+  color: #fff;
+  font-family: Georgia;
+  font-size: 1.5rem;
+  line-height: 136.69%;
+  /* text-transform: uppercase; */
+  width: 75%;
+}
+
+.about-right-text {
+  text-align: right; /* Align text to the right */
+  margin-top: 2rem; /* Add spacing above the paragraph */
+  margin-left: auto;
+}
+
+.about-image {
+  width: 20%;
+  height: max-content;
+  transform: rotateY(-10deg);
+  transition: transform 200ms ease-in-out;
+  position: relative;
+}
+
+.about-image img {
+  width: 100%;
+  aspect-ratio: 3/4;
+}
+
+.about-image:hover {
+  transform: rotateY(0deg);
+}
+
+@media only screen and (max-width: 768px) {
+  .about {
+    margin-bottom: 2rem;
+    padding: 2rem 4vw;
+  }
+
+  .about-title {
+    font-size: 2.5rem;
+  }
+
+  .about-body {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    padding-right: 0;
+    margin-top: 1.2rem;
+  }
+
+  .about-image {
+    width: 75%;
+    transform: none;
+  }
+
+  .about-body p {
+    font-size: 1.5rem;
+    width: 100%;
+  }
+}

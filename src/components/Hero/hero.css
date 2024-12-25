@@ -1,0 +1,130 @@
+.hero {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center everything vertically */
+  align-items: center; /* Center everything horizontally */
+  position: relative;
+  overflow: hidden;
+  background: url("/bg.png");
+  background-size: cover;
+}
+
+.heading {
+  text-align: center;
+  font-family: Orbitron;
+  font-size: 5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: #c2e7fb;
+  text-shadow: 0px 0px 20px rgba(125, 205, 251, 0.5);
+}
+
+.scroll-text-wrapper {
+  padding-top: 6rem; /* Space between title and scroll text */
+}
+
+
+.title {
+  color: #c2e7fb;
+  text-shadow: 0px 0px 20px rgba(125, 205, 251, 0.5);
+}
+
+.outline {
+  z-index: 3;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 0.1rem;
+  -webkit-text-stroke-color: #c2e7fb;
+}
+
+.grid {
+  width: 100vw;
+  height: 28vh;
+  z-index: 2;
+}
+
+.vrGuy {
+  aspect-ratio: 887/581;
+  height: 43vh;
+  transform: translate(-4%, 2%);
+}
+
+.header {
+  position: absolute;
+  top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 3rem;
+}
+
+.header-logo {
+  width: 5rem;
+}
+
+.connect-button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 10rem;
+  height: 4rem;
+  transition: transform 250ms ease-in-out;
+}
+
+.connect-svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 8;
+}
+
+.connect-text {
+  color: #c2e7fb;
+  text-align: center;
+  font-family: Bayon;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  z-index: 9;
+}
+
+@media only screen and (max-width: 768px) {
+  .grid-svg {
+    width: 500vw;
+  }
+
+  .vrGuy {
+    transform: translate(5%, 2%);
+  }
+
+  .heading {
+    font-size: 2.7rem;
+  }
+
+  .scroll-text-wrapper {
+    padding-top: 6rem; 
+  }
+
+  .header {
+    padding: 0 1.6rem;
+  }
+
+  .header-logo {
+    width: 3.8rem;
+  }
+
+  .connect-button {
+    width: 7rem;
+    height: 2rem;
+  }
+
+  .connect-text {
+    font-size: 0.8rem;
+  }
+}

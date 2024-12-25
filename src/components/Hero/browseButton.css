@@ -1,0 +1,43 @@
+.browse-button {
+  position: absolute;
+  bottom: 15vh;
+  height: 4rem;
+  width: 15rem;
+  display: grid;
+  place-items: center;
+  transition: width 250ms ease-in-out;
+}
+
+.browse-button:hover {
+  width: 14rem;
+}
+
+.browse-svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 8;
+}
+
+.browse-text {
+  color: #000;
+  text-align: center;
+  font-family: Bayon;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  z-index: 9;
+}
+
+@media only screen and (max-width: 768px) {
+  .browse-button {
+    width: 13rem;
+  }
+
+  .browse-text {
+    font-size: 1.4rem;
+  }
+}

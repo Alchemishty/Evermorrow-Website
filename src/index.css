@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bayon&display=swap");
+
+@font-face {
+  font-family: FormulaCondensed-Bold;
+  src: url("/FormulaCondensed-Bold.otf");
+}
+
+.cursor {
+  position: fixed;
+  border-radius: 500px;
+  pointer-events: none;
+  transition:
+    top ease-in-out,
+    left ease-in-out,
+    background ease-in-out 250ms,
+    height ease-in-out 250ms,
+    width ease-in-out 250ms;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.cursor-default {
+  height: 2rem;
+  width: 2rem;
+  background: var(--gradient);
+}
+
+.cursor-title {
+  height: 2rem;
+  width: 2rem;
+  background: var(--gradient);
+  mix-blend-mode: difference;
+}
+
+.cursor-browse {
+  height: 3rem;
+  width: 3rem;
+  background: url("/arrow-down.svg");
+  background-size: cover;
+  border: 2px solid var(--gradient);
+}
+
+.cursor-gamecard {
+  height: 5rem;
+  width: 5rem;
+  background: url("/arrow-up-right.svg");
+  background-size: cover;
+}
+
+.cursor-steam {
+  opacity: 0;
+  height: 5rem;
+  width: 5rem;
+  transition: opacity 250ms ease-in-out;
+  animation: spin 10s linear infinite;
+}
+
+.cursor-gamecard>.cursor-steam {
+  opacity: 1;
+  transition-delay: 150ms;
+}
+
+.cursor-preloading {
+  z-index: -1;
+  position: fixed;
+  bottom: 0;
+  opacity: 0;
+}
+
+.cursor-subscribe {
+  height: 3rem;
+  width: 3rem;
+  rotate: -90deg;
+  transform: translate(50%, -50%);
+  background: url("/arrow-down.svg");
+  background-size: cover;
+  border: 2px solid var(--gradient);
+}
+
+.cursor-link {
+  height: 2.5rem;
+  width: 2.5rem;
+  rotate: -135deg;
+  transform: translate(50%, 0%);
+  background: url("/arrow-down.svg");
+  background-size: cover;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  * {
+    cursor: auto;
+  }
+
+  .cursor {
+    display: none;
+  }
+}

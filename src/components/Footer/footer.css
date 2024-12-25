@@ -1,0 +1,247 @@
+.footer {
+  width: 100vw;
+  height: max-content;
+  position: relative;
+  margin-top: 10vh;
+}
+
+.footer>img {
+  width: 100vw;
+}
+
+.footer-content {
+  width: 100%;
+  height: max-content;
+  background: #06131e;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 7vh;
+  padding: 3rem 4rem;
+  margin-top: -0.5rem;
+}
+
+.footer-above {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  gap: 2vw;
+}
+
+.footer-subscribe {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  position: relative;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.footer-subscribe p {
+  color: #fff;
+  font-family: Bayon;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.footer-input {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  aspect-ratio: 515/76;
+  align-items: center;
+  background: url("/footerInput.svg");
+  background-size: 100% 100%;
+  padding: 0.8rem 1rem;
+}
+
+.footer-input input {
+  color: #fff;
+  font-family: Bayon;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  padding-left: 1rem;
+  flex-grow: 1;
+}
+
+.footer-input input:focus {
+  outline: none;
+}
+
+.footer-input button {
+  display: grid;
+  place-items: center;
+  background: url("/subscribeButton.svg");
+  background-size: cover;
+  height: 90%;
+  aspect-ratio: 155/74;
+  border: none;
+  color: #06131e;
+  font-family: Bayon;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  transition: transform 250ms ease-in-out;
+}
+
+.footer-input button:hover {
+  transform: scale(0.94, 0.94);
+}
+
+.footer-comp {
+  padding: 1rem;
+  margin-right: 3vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-comp h3 {
+  color: #fff;
+  font-family: Bayon;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.footer-links a {
+  color: #bba7e6;
+  font-family: Bayon;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 170%;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-below {
+  border-top: 0.1rem #a398bb solid;
+  width: 100%;
+  height: max-content;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  margin-bottom: 4vh;
+}
+
+.footer-below-left {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-below-left p {
+  color: #a398bb;
+  font-family: Bayon;
+  font-size: 1.1875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.footer-cc-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-cc-links a {
+  color: #a398bb;
+  text-decoration: none;
+  font-family: Bayon;
+  font-size: 1.1875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.footer-cc-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-below-right {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-below-right img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.footer-below-right img:hover {
+  transform: scale(1.05, 1.05);
+}
+
+@media only screen and (max-width: 768px) {
+  .footer-content {
+    padding: 0.8rem 0.5rem;
+    gap: 4vh;
+  }
+
+  .footer-above {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .footer-comp {
+    margin-right: 0;
+    padding: 0.5rem 1rem;
+  }
+
+  .footer-subscribe {
+    width: 100%;
+  }
+
+  .footer-input {
+    padding: 0.5rem 0.6rem;
+  }
+
+  .footer-input input {
+    padding-left: 0;
+    font-size: 1.2rem;
+  }
+
+  .footer-input button {
+    font-size: 0.8rem;
+  }
+
+  .footer-below {
+    flex-direction: column-reverse;
+    justify-content: start;
+    gap: 0.4rem;
+  }
+
+  .footer-below-left {
+    flex-direction: column-reverse;
+    gap: 0.3rem;
+    align-items: center;
+  }
+}
