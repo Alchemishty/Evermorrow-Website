@@ -1,108 +1,91 @@
-@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Bayon&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@400;500&display=swap');
 
-@font-face {
-  font-family: FormulaCondensed-Bold;
-  src: url("/FormulaCondensed-Bold.otf");
+:root {
+  --color-canvas: #FFF8F1;
+  --color-ink: #0A0A0A;
+  --color-crimson: #8B1A1A;
+  --color-muted: #6B5E53;
+  --color-border: #E8E0D8;
+
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+
+  --size-display: clamp(3.5rem, 8vw, 8rem);
+  --size-body: 1.125rem;
+  --size-small: 0.875rem;
+
+  --leading-body: 1.7;
+  --tracking-display: -0.02em;
+
+  --space-section: clamp(6rem, 12vh, 10rem);
+  --space-page-x: clamp(1.5rem, 5vw, 3rem);
 }
 
-.cursor {
-  position: fixed;
-  border-radius: 500px;
-  pointer-events: none;
-  transition:
-    top ease-in-out,
-    left ease-in-out,
-    background ease-in-out 250ms,
-    height ease-in-out 250ms,
-    width ease-in-out 250ms;
-  transform: translate(-50%, -50%);
-  z-index: 10;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.cursor-default {
-  height: 2rem;
-  width: 2rem;
-  background: var(--gradient);
+html {
+  scroll-behavior: smooth;
 }
 
-.cursor-title {
-  height: 2rem;
-  width: 2rem;
-  background: var(--gradient);
-  mix-blend-mode: difference;
+body {
+  font-family: var(--font-body);
+  font-size: var(--size-body);
+  line-height: var(--leading-body);
+  color: var(--color-ink);
+  background-color: var(--color-canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.cursor-browse {
-  height: 3rem;
-  width: 3rem;
-  background: url("/arrow-down.svg");
-  background-size: cover;
-  border: 2px solid var(--gradient);
+a {
+  color: var(--color-crimson);
+  text-decoration: none;
+  transition: opacity 200ms ease-out;
 }
 
-.cursor-gamecard {
-  height: 5rem;
-  width: 5rem;
-  background: url("/arrow-up-right.svg");
-  background-size: cover;
+a:hover {
+  opacity: 0.7;
 }
 
-.cursor-steam {
-  opacity: 0;
-  height: 5rem;
-  width: 5rem;
-  transition: opacity 250ms ease-in-out;
-  animation: spin 10s linear infinite;
+a:focus-visible {
+  outline: 2px solid var(--color-crimson);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
-.cursor-gamecard>.cursor-steam {
-  opacity: 1;
-  transition-delay: 150ms;
+::selection {
+  background: var(--color-crimson);
+  color: var(--color-canvas);
 }
 
-.cursor-preloading {
-  z-index: -1;
-  position: fixed;
-  bottom: 0;
-  opacity: 0;
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--color-ink);
+  color: var(--color-canvas);
+  font-size: var(--size-small);
+  z-index: 100;
+  border-radius: 0 0 4px 4px;
 }
 
-.cursor-subscribe {
-  height: 3rem;
-  width: 3rem;
-  rotate: -90deg;
-  transform: translate(50%, -50%);
-  background: url("/arrow-down.svg");
-  background-size: cover;
-  border: 2px solid var(--gradient);
+.skip-link:focus {
+  top: 0;
 }
 
-.cursor-link {
-  height: 2.5rem;
-  width: 2.5rem;
-  rotate: -135deg;
-  transform: translate(50%, 0%);
-  background: url("/arrow-down.svg");
-  background-size: cover;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  * {
-    cursor: auto;
-  }
-
-  .cursor {
-    display: none;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
