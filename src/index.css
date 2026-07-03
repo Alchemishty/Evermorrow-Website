@@ -29,6 +29,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  background-color: var(--color-canvas);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -38,9 +43,9 @@ body {
   font-size: var(--size-body);
   line-height: var(--leading-body);
   color: var(--color-ink);
-  background-color: var(--color-canvas);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
 }
 
 a {

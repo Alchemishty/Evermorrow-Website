@@ -36,7 +36,7 @@ function App() {
       <a className="skip-link" href="#vision">Skip to content</a>
 
       {/* Scroll spacer — drives the animation */}
-      <div style={{ height: '400vh' }} />
+      <div style={{ height: '400vh', background: 'var(--color-canvas)' }} />
 
       {/* Fixed viewport frame */}
       <div className="frame">
