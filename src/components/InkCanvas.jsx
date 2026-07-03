@@ -1,21 +1,18 @@
 import { useEffect, useRef } from 'react';
 
-const PARTICLE_DENSITY = 0.00015;
-const INK_OPACITY = 0.04;
-const NOISE_SCALE = 0.003;
-const SPEED = 0.8;
-
-function pseudoNoise(x, y, t) {
-  const a = Math.sin(x * 0.01 + t * 0.3) * Math.cos(y * 0.012 - t * 0.2);
-  const b = Math.sin((x + y) * 0.008 + t * 0.15) * Math.cos(x * 0.005 - t * 0.25);
-  const c = Math.sin(x * 0.006 - y * 0.009 + t * 0.1);
-  return (a + b + c) / 3;
-}
+const BLOB_COUNT = 5;
+const COLORS = [
+  { r: 139, g: 26, b: 26 },   // crimson
+  { r: 180, g: 120, b: 80 },  // warm amber
+  { r: 60, g: 40, b: 30 },    // dark umber
+  { r: 160, g: 90, b: 60 },   // sienna
+  { r: 100, g: 60, b: 80 },   // muted plum
+];
 
 export default function InkCanvas() {
   const canvasRef = useRef(null);
   const animRef = useRef(null);
-  const particlesRef = useRef([]);
+  const blobsRef = useRef([]);
   const timeRef = useRef(0);
 
   useEffect(() => {
@@ -28,53 +25,56 @@ export default function InkCanvas() {
       canvas.width = canvas.offsetWidth * dpr;
       canvas.height = canvas.offsetHeight * dpr;
       ctx.scale(dpr, dpr);
-      initParticles();
+      initBlobs();
     }
 
-    function initParticles() {
+    function initBlobs() {
       const w = canvas.offsetWidth;
       const h = canvas.offsetHeight;
-      const count = Math.floor(w * h * PARTICLE_DENSITY);
-      particlesRef.current = Array.from({ length: count }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        age: Math.random() * 200,
+      blobsRef.current = Array.from({ length: BLOB_COUNT }, (_, i) => ({
+        x: w * (0.2 + Math.random() * 0.6),
+        y: h * (0.2 + Math.random() * 0.6),
+        radius: Math.max(w, h) * (0.3 + Math.random() * 0.25),
+        color: COLORS[i % COLORS.length],
+        phaseX: Math.random() * Math.PI * 2,
+        phaseY: Math.random() * Math.PI * 2,
+        speedX: 0.15 + Math.random() * 0.1,
+        speedY: 0.12 + Math.random() * 0.1,
+        driftX: w * (0.15 + Math.random() * 0.1),
+        driftY: h * (0.15 + Math.random() * 0.1),
       }));
     }
 
     function draw() {
       const w = canvas.offsetWidth;
       const h = canvas.offsetHeight;
-      const particles = particlesRef.current;
-      timeRef.current += 0.01;
+      timeRef.current += 0.003;
       const t = timeRef.current;
 
-      ctx.fillStyle = `rgba(10, 10, 10, ${INK_OPACITY})`;
+      ctx.clearRect(0, 0, w, h);
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.fillStyle = '#FFF8F1';
+      ctx.fillRect(0, 0, w, h);
 
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        const angle = pseudoNoise(p.x * NOISE_SCALE, p.y * NOISE_SCALE, t) * Math.PI * 2;
-        p.x += Math.cos(angle) * SPEED;
-        p.y += Math.sin(angle) * SPEED;
-        p.age++;
+      ctx.globalCompositeOperation = 'multiply';
 
-        if (p.x < 0 || p.x > w || p.y < 0 || p.y > h || p.age > 300) {
-          p.x = Math.random() * w;
-          p.y = Math.random() * h;
-          p.age = 0;
-        }
+      for (const blob of blobsRef.current) {
+        const x = blob.x + Math.sin(t * blob.speedX + blob.phaseX) * blob.driftX;
+        const y = blob.y + Math.cos(t * blob.speedY + blob.phaseY) * blob.driftY;
 
-        const fadeIn = Math.min(p.age / 30, 1);
-        const fadeOut = Math.max((300 - p.age) / 100, 0);
-        const alpha = fadeIn * fadeOut;
+        const gradient = ctx.createRadialGradient(x, y, 0, x, y, blob.radius);
+        const { r, g, b } = blob.color;
+        gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, 0.12)`);
+        gradient.addColorStop(0.4, `rgba(${r}, ${g}, ${b}, 0.06)`);
+        gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
 
-        ctx.globalAlpha = alpha;
+        ctx.fillStyle = gradient;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
+        ctx.arc(x, y, blob.radius, 0, Math.PI * 2);
         ctx.fill();
       }
 
-      ctx.globalAlpha = 1;
+      ctx.globalCompositeOperation = 'source-over';
     }
 
     function loop() {
@@ -85,21 +85,19 @@ export default function InkCanvas() {
     resize();
 
     if (reducedMotion) {
-      for (let i = 0; i < 120; i++) draw();
+      draw();
     } else {
       loop();
     }
 
-    const onResize = () => {
-      cancelAnimationFrame(animRef.current);
-      resize();
-      if (!reducedMotion) loop();
-    };
-
     let resizeTimer;
     const debouncedResize = () => {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(onResize, 200);
+      resizeTimer = setTimeout(() => {
+        cancelAnimationFrame(animRef.current);
+        resize();
+        if (!reducedMotion) loop();
+      }, 200);
     };
 
     window.addEventListener('resize', debouncedResize);

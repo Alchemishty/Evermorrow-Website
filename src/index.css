@@ -80,6 +80,131 @@ a:focus-visible {
   top: 0;
 }
 
+/* Fixed frame layout */
+.frame {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.frame__topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem var(--space-page-x);
+  z-index: 2;
+}
+
+.frame__logo {
+  height: 2.5rem;
+  width: auto;
+}
+
+.frame__contact {
+  font-family: var(--font-body);
+  font-size: var(--size-small);
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.75rem 0;
+}
+
+.frame__content {
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+  max-width: 750px;
+  padding: 0 var(--space-page-x);
+  will-change: transform, opacity;
+}
+
+.frame__title {
+  font-family: var(--font-display);
+  font-size: var(--size-display);
+  font-weight: 300;
+  letter-spacing: var(--tracking-display);
+  line-height: 1.1;
+  color: var(--color-ink);
+}
+
+.frame__subtitle {
+  margin-top: 1.5rem;
+  font-size: var(--size-body);
+  color: var(--color-muted);
+  font-weight: 400;
+}
+
+.frame__pull-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--color-ink);
+  letter-spacing: var(--tracking-display);
+  margin-bottom: 2rem;
+}
+
+.frame__body {
+  color: var(--color-muted);
+  font-size: var(--size-body);
+  line-height: var(--leading-body);
+}
+
+.frame__signoff {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.frame__signoff-email {
+  font-size: var(--size-small);
+  color: var(--color-muted);
+  letter-spacing: 0.03em;
+}
+
+.frame__scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.frame__scroll-line {
+  display: block;
+  width: 1px;
+  height: 2.5rem;
+  background: var(--color-muted);
+  animation: scrollPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.2; transform: scaleY(1); }
+  50% { opacity: 0.5; transform: scaleY(1.4); transform-origin: top; }
+}
+
+@media (max-width: 640px) {
+  .frame__logo {
+    height: 2rem;
+  }
+
+  .frame__subtitle {
+    font-size: var(--size-small);
+  }
+
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -87,5 +212,10 @@ a:focus-visible {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .frame__scroll-line {
+    animation: none;
+    opacity: 0.4;
   }
 }
